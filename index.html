@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stackly – Digital Marketing Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(120deg, #ecfff3, #e6e9ff);
+      color: #111;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.7);
+      z-index: 100;
+    }
+
+    .logo img {
+      height: 42px;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+      font-weight: 500;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #222;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: #3ddc84;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .login-btn {
+      text-decoration: none;
+      color: #111;
+      font-weight: 600;
+    }
+
+    .register-btn {
+      background: #6be585;
+      padding: 10px 22px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 700;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 140px 80px 80px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero span {
+      color: #3ddc84;
+    }
+
+    .hero p {
+      color: #555;
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 35px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: #6be585;
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 700;
+    }
+
+    .btn-secondary {
+      text-decoration: none;
+      color: #111;
+      font-weight: 600;
+    }
+
+    /* RIGHT MOCKUPS */
+    .mockups {
+      position: relative;
+      height: 520px;
+    }
+
+    .card {
+      position: absolute;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.12);
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-1 {
+      width: 380px;
+      height: 260px;
+      top: 0;
+      right: 40px;
+      z-index: 3;
+    }
+
+    .card-2 {
+      width: 360px;
+      height: 240px;
+      top: 160px;
+      right: 0;
+      z-index: 2;
+    }
+
+    .card-3 {
+      width: 340px;
+      height: 220px;
+      top: 80px;
+      right: 220px;
+      z-index: 1;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 900px) {
+      header {
+        padding: 18px 30px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .mockups {
+        margin-top: 60px;
+        height: 400px;
+      }
+
+      .card {
+        position: relative;
+        margin: 0 auto 20px;
+        right: auto;
+        top: auto;
+      }
+    }
+
+    /* TRUST SECTION */
+    .trust-section {
+      padding: 80px;
+      background: linear-gradient(180deg, #ffffff, #f7f9fc);
+      text-align: center;
+    }
+
+    .brand-logos {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+
+    .brand-logos img {
+      height: 32px;
+      opacity: 1;
+      filter: none;
+      transition: 0.3s ease;
+    }
+
+    .brand-logos img:hover {
+      transform: translateY(-4px);
+    }
+
+    .trust-divider {
+      margin: 50px auto;
+      height: 1px;
+      background: #ddd;
+      width: 80%;
+    }
+
+    .trust-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 60px;
+    }
+
+    .trust-box .icon {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .trust-box h3 {
+      font-size: 48px;
+      font-weight: 800;
+    }
+
+    .trust-box p {
+      color: #666;
+    }
+
+    @media(max-width: 900px) {
+      .trust-stats {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* DEMOS INTRO SECTION */
+.demos-intro {
+  padding: 120px 80px;
+  text-align: center;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.demos-intro::before {
+  content: "";
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  top: -40%;
+  left: -20%;
+  background: repeating-radial-gradient(
+    circle at center,
+    rgba(0,0,0,0.03),
+    rgba(0,0,0,0.03) 1px,
+    transparent 1px,
+    transparent 20px
+  );
+  opacity: 0.4;
+}
+
+.demos-content {
+  position: relative;
+  z-index: 2;
+}
+
+.demo-number {
+  font-size: 96px;
+  font-weight: 900;
+  color: #2f6f73;
+  margin-bottom: 10px;
+}
+
+.demo-label {
+  letter-spacing: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2f6f73;
+  margin-bottom: 25px;
+}
+
+.demos-intro h2 {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.demos-intro p {
+  color: #666;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+  .demo-number {
+    font-size: 72px;
+  }
+
+  .demos-intro h2 {
+    font-size: 34px;
+  }
+}
+
+/* VALUE SECTION */
+.value-section {
+  padding: 120px 80px;
+  background: #fff;
+}
+
+.value-top {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.social-proof {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.social-proof img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.value-left h2 {
+  font-size: 48px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.value-left p {
+  color: #555;
+  max-width: 480px;
+  margin-bottom: 25px;
+}
+
+.yellow-btn {
+  background: #ffc400;
+  padding: 12px 26px;
+  border-radius: 8px;
+  color: #000;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.value-right img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* METRICS */
+.metrics {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.metric-box {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white;
+  padding: 40px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.metric-box h3 {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+/* ABOUT SPLIT */
+.about-split {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-left img {
+  width: 100%;
+}
+
+.tag {
+  display: inline-block;
+  background: #ffc400;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.about-right h3 {
+  font-size: 36px;
+  margin: 15px 0;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+  .value-top,
+  .about-split,
+  .metrics {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .value-left h2 {
+    font-size: 34px;
+  }
+}
+
+/* DARK STATS */
+.dark-stats {
+  background: #0e0e0e;
+  padding: 60px 80px;
+  color: white;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: left;
+}
+
+.stat-box h3 {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.stat-box p {
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.stat-box span {
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* VALUES SECTION */
+.values-section {
+  position: relative;
+  background: url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d");
+  background-size: cover;
+  background-position: center;
+  padding: 140px 80px;
+  color: white;
+}
+
+.values-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+}
+
+.values-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+}
+
+.yellow-tag {
+  background: #ffc400;
+  color: #000;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.values-content h2 {
+  font-size: 42px;
+  margin: 20px 0 60px;
+}
+
+.values-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.value-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 16px;
+  text-align: left;
+}
+
+.value-icon {
+  width: 48px;
+  height: 48px;
+  background: #3ddc84;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+  .stats-grid,
+  .values-cards {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .values-content h2 {
+    font-size: 30px;
+  }
+}
+
+/* SERVICES SECTION */
+.services-section {
+  padding: 120px 80px;
+  background: #fff;
+}
+
+/* TRUST STRIP */
+.trusted-strip {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.trusted-strip p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.trusted-logos {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 30px;
+  opacity: 0.7;
+}
+
+.trusted-logos img {
+  height: 28px;
+  margin: auto;
+}
+
+/* SERVICES CONTENT */
+.services-content {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.services-left h2 {
+  font-size: 42px;
+  margin: 20px 0;
+}
+
+.service-list {
+  margin-top: 40px;
+}
+
+.service-item {
+  border: 1px solid #eee;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+
+.service-item.active,
+.service-item:hover {
+  background: #3ddc84;
+  color: white;
+}
+
+/* RIGHT IMAGE */
+.services-right {
+  position: relative;
+}
+
+.services-right img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.service-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #7cff6b, #3ddc84);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+  .services-content,
+  .trusted-logos {
+    grid-template-columns: 1fr;
+  }
+
+  .services-left h2 {
+    font-size: 30px;
+  }
+}
+
+/* SERVICES MATRIX */
+.services-matrix {
+  background: #0e0e0e;
+  color: white;
+}
+
+.matrix-top {
+  padding: 120px 80px;
+  text-align: center;
+}
+
+.matrix-top h2 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.matrix-top p {
+  color: #aaa;
+  max-width: 700px;
+  margin: auto;
+}
+
+.matrix-grid {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.matrix-box h4 {
+  margin-bottom: 15px;
+}
+
+.matrix-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.matrix-box li {
+  margin-bottom: 8px;
+  color: #ccc;
+}
+
+/* WHY CHOOSE */
+.why-choose {
+  padding: 120px 80px;
+  text-align: center;
+}
+
+.why-choose h2 {
+  font-size: 36px;
+  margin: 20px 0 60px;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.why-box {
+  background: rgba(255,255,255,0.05);
+  padding: 40px;
+  border-radius: 16px;
+}
+
+.why-icon {
+  width: 48px;
+  height: 48px;
+  background: #3ddc84;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: black;
+}
+
+/* TESTIMONIAL */
+.testimonial {
+  padding: 120px 80px;
+  background: #1a1a1a;
+  text-align: center;
+}
+
+.testimonial .quote {
+  font-size: 80px;
+  color: #3ddc84;
+}
+
+.testimonial img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 20px 0;
+}
+
+.testimonial p {
+  max-width: 700px;
+  margin: 20px auto;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.testimonial h4 {
+  margin-top: 15px;
+}
+
+.testimonial span {
+  color: #3ddc84;
+  font-size: 13px;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+  .matrix-grid,
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .matrix-top h2,
+  .why-choose h2 {
+    font-size: 30px;
+  }
+}
+
+/* PROJECTS SECTION */
+.projects-section {
+  padding: 120px 80px;
+  background: #fff;
+}
+
+.projects-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.projects-header h2 {
+  font-size: 42px;
+  margin: 20px 0;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.project-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.project-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 20px;
+}
+
+.project-arrow {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background: #ffc400;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* VIDEO CTA */
+.video-cta {
+  position: relative;
+  height: 420px;
+  background: url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+}
+
+.video-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 600px;
+}
+
+.play-btn {
+  width: 70px;
+  height: 70px;
+  background: #ffc400;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 24px;
+  margin: 0 auto 20px;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-header h2 {
+    font-size: 30px;
+  }
+}
+
+/* SUPPORT SECTION */
+.support-section {
+  padding: 120px 80px;
+  text-align: center;
+  background: #fff;
+}
+
+.support-section h2 {
+  font-size: 42px;
+  margin: 20px 0 60px;
+}
+
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.support-card {
+  background: #f5f5f5;
+  padding: 50px 30px;
+  border-radius: 16px;
+}
+
+.support-card.active {
+  background: linear-gradient(135deg, #9acd32, #3ddc84);
+  color: white;
+}
+
+.support-icon {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.black-btn {
+  background: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* NEWSLETTER */
+.newsletter {
+  background: linear-gradient(135deg, #3ddc84, #7cff6b);
+  padding: 50px 80px;
+  color: black;
+}
+
+.newsletter-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.newsletter input {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: none;
+  margin-right: 10px;
+}
+
+.newsletter button {
+  background: #ffc400;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+/* FOOTER */
+.footer {
+  background: #0e0e0e;
+  color: white;
+  padding: 80px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+}
+
+.footer-col a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.footer-bottom {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  font-size: 14px;
+}
+
+.footer-links a {
+  margin-left: 20px;
+  color: #ccc;
+  text-decoration: none;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+  .support-grid,
+  .footer-grid,
+  .newsletter-content {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .newsletter form {
+    margin-top: 20px;
+  }
+}
+
+/* FOOTER (IMPROVED) */
+.footer {
+  background: #0e0e0e;
+  color: white;
+  padding: 90px 80px 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1fr;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+.footer-brand p {
+  color: #ccc;
+  line-height: 1.7;
+  margin: 20px 0;
+  max-width: 320px;
+}
+
+/* SOCIAL ICONS */
+.footer-socials {
+  display: flex;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.footer-socials a {
+  width: 38px;
+  height: 38px;
+  background: #1f1f1f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.footer-socials a:hover {
+  background: #3ddc84;
+  color: black;
+  transform: translateY(-4px);
+}
+
+/* COLUMNS */
+.footer-col h4 {
+  margin-bottom: 18px;
+  font-size: 16px;
+}
+
+.footer-col a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin-bottom: 10px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.footer-col a:hover {
+  color: #3ddc84;
+  padding-left: 4px;
+}
+
+/* BOTTOM BAR */
+.footer-bottom {
+  margin-top: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.footer-links a {
+  margin-left: 20px;
+  color: #aaa;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #3ddc84;
+}
+
+/* MOBILE */
+@media(max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .footer-brand p {
+    margin: 15px auto;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .footer-links a {
+    margin: 0 10px;
+  }
+}
+
+/* GLOBAL FIX */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background: #111;
+  border-radius: 3px;
+}
+
+/* MOBILE MENU */
+.mobile-menu {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  background: white;
+  display: none;
+  flex-direction: column;
+  padding: 30px;
+  gap: 18px;
+  z-index: 99;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.mobile-auth {
+  margin-top: 20px;
+  display: flex;
+  gap: 14px;
+}
+
+/* RESPONSIVE HEADER */
+@media(max-width: 900px) {
+  .desktop-nav,
+  .desktop-auth {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* ===== REAL MOBILE FIX ===== */
+@media (max-width: 768px) {
+
+  /* Universal padding fix */
+  section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  header {
+    padding: 14px 20px;
+  }
+
+  /* HERO */
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 120px 20px 60px;
+    gap: 40px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  /* MOCKUPS FIX */
+  .mockups {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card {
+    position: relative;
+    width: 100% !important;
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+
+  /* ALL GRIDS → 1 COLUMN */
+  .stats-grid,
+  .values-cards,
+  .metrics,
+  .services-content,
+  .matrix-grid,
+  .why-grid,
+  .projects-grid,
+  .support-grid,
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* NEWSLETTER */
+  .newsletter-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .newsletter input,
+  .newsletter button {
+    width: 100%;
+  }
+
+  /* MOBILE MENU */
+  .mobile-menu {
+    top: 64px;
+    padding: 20px;
+  }
+
+  .mobile-auth {
+    flex-direction: column;
+  }
+}
+
+/* ===== FOOTER MOBILE PERFECT CENTER ===== */
+@media (max-width: 768px) {
+
+  .footer {
+    padding: 60px 20px 30px;
+    text-align: center;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    justify-items: center;
+  }
+
+  .footer-col,
+  .footer-brand {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-col a {
+    text-align: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links {
+    margin-top: 10px;
+  }
+}
+
+/* ===== FULL SCREEN MOBILE MENU ===== */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  z-index: 999;
+}
+
+.mobile-menu a {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.mobile-auth {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===== FULL SCREEN MOBILE MENU (FIXED) ===== */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+  padding-left: 40px;
+  z-index: 999;
+}
+
+/* Nav links stay centered vertically */
+.mobile-menu a {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* Auth block aligned like real apps */
+.mobile-auth {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;   /* 👈 THIS fixes Login alignment */
+}
+
+/* ===== REAL MOBILE MENU (FINAL) ===== */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px;
+  gap: 28px;
+  z-index: 999;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+/* nav links */
+.mobile-menu a {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* login block NOT centered */
+.mobile-auth {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+/* ===== FINAL MOBILE MENU (CLEAN) ===== */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: white;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 32px;
+  gap: 24px;
+  z-index: 999;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+/* Nav links */
+.mobile-menu > a {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Auth block */
+.mobile-auth {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.mobile-auth a {
+  text-align: left;
+}
+
+.mobile-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* ===== FINAL MOBILE MENU (CLEAN) ===== */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: white;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;   /* 👈 CENTER EVERYTHING */
+  gap: 24px;
+  z-index: 999;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+/* Nav links */
+.mobile-menu > a {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Auth block */
+.mobile-auth {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;   /* 👈 THIS FIXES LOGIN */
+}
+
+.mobile-auth a {
+  text-align: center;
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="assets/images/logo/stackly_logo.webp" alt="Stackly Logo">
+  </div>
+
+  <nav class="desktop-nav">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Pages</a>
+    <a href="#">Contact</a>
+    <a href="#">Dashboard</a>
+  </nav>
+
+  <div class="auth-buttons desktop-auth">
+    <a href="#" class="login-btn">Login</a>
+    <a href="#" class="register-btn">Register</a>
+  </div>
+
+  <!-- Hamburger -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<!-- Mobile Dropdown -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-close" onclick="toggleMenu()">✕</div>
+
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Pages</a>
+  <a href="#">Contact</a>
+  <a href="#">Dashboard</a>
+
+  <div class="mobile-auth">
+    <a href="#" class="login-btn">Login</a>
+    <a href="#" class="register-btn">Register</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div>
+    <h1>
+      Grow Your Business <br/>
+      With <span>Stackly</span> <br/>
+      Marketing Platform
+    </h1>
+
+    <p>
+      Stackly is a powerful digital marketing and SEO platform 
+      built to scale your brand, generate leads, and increase ROI.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">Get Started →</a>
+      <a href="#" class="btn-secondary">Explore Platform ↗</a>
+    </div>
+  </div>
+
+  <div class="mockups">
+    <div class="card card-1">
+      <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7" />
+    </div>
+
+    <div class="card card-2">
+      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692" />
+    </div>
+
+    <div class="card card-3">
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" />
+    </div>
+  </div>
+</section>
+
+<!-- TRUST SECTION -->
+<section class="trust-section">
+
+  <div class="trust-divider"></div>
+
+  <div class="trust-stats">
+    <div class="trust-box">
+      <div class="icon">🤝</div>
+      <h3>1000+</h3>
+      <p>Clients Trust Stackly</p>
+    </div>
+
+    <div class="trust-box">
+      <div class="icon">♾️</div>
+      <h3>Free</h3>
+      <p>Lifetime Updates</p>
+    </div>
+
+    <div class="trust-box">
+      <div class="icon">🎧</div>
+      <h3>24/7</h3>
+      <p>Dedicated Support Team</p>
+    </div>
+  </div>
+</section>
+
+<!-- DEMOS INTRO SECTION -->
+<section class="demos-intro">
+  <div class="demos-content">
+    <div class="demo-number">04</div>
+    <div class="demo-label">PRE MADE DEMOS</div>
+
+    <h2>
+      Collection Of Creative And <br/>
+      Exclusive Layouts
+    </h2>
+
+    <p>
+      Exclusive Stackly marketing theme designed pages suitable for
+      Digital Marketing and SEO Agencies.
+    </p>
+  </div>
+</section>
+
+<!-- VALUE SECTION -->
+<section class="value-section">
+  <div class="value-top">
+    <div class="value-left">
+      <div class="social-proof">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg">
+        <img src="https://randomuser.me/api/portraits/men/65.jpg">
+        <span>More than 7,000+ Happy Clients Around the World</span>
+      </div>
+
+      <h2>
+        Elevating Brands <br/>
+        With Smart Digital <br/>
+        Strategy
+      </h2>
+
+      <p>
+        Our team creates tailored solutions that enhance visibility 
+        and conversions for modern businesses.
+      </p>
+
+      <a href="#" class="yellow-btn">Discover More</a>
+    </div>
+
+    <div class="value-right">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" />
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric-box">
+      <h3>40% ↑</h3>
+      <p>Traffic Growth</p>
+    </div>
+    <div class="metric-box">
+      <h3>60% ↑</h3>
+      <p>Sales Increase</p>
+    </div>
+    <div class="metric-box">
+      <h3>23% ↑</h3>
+      <p>Retention Boost</p>
+    </div>
+  </div>
+
+  <div class="about-split">
+    <div class="about-left">
+      <img src="https://cdn-icons-png.flaticon.com/512/4205/4205906.png">
+    </div>
+
+    <div class="about-right">
+      <span class="tag">WHO WE ARE</span>
+      <h3>Your Trusted Digital Partner With A Clear Purpose</h3>
+      <p>
+        Stackly focuses on building data-driven strategies that 
+        help brands grow, scale, and dominate their digital presence.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- DARK STATS + VALUES SECTION -->
+<section class="dark-stats">
+  <div class="stats-grid">
+    <div class="stat-box">
+      <h3>8,900+</h3>
+      <p>Happy Clients</p>
+      <span>Lorem ipsum dolor sit amet morbi feugiat</span>
+    </div>
+
+    <div class="stat-box">
+      <h3>2,750+</h3>
+      <p>Project Done</p>
+      <span>Lorem ipsum dolor sit amet morbi feugiat</span>
+    </div>
+
+    <div class="stat-box">
+      <h3>22+</h3>
+      <p>Global Regions</p>
+      <span>Lorem ipsum dolor sit amet morbi feugiat</span>
+    </div>
+
+    <div class="stat-box">
+      <h3>400+</h3>
+      <p>Top-Rated Expert</p>
+      <span>Lorem ipsum dolor sit amet morbi feugiat</span>
+    </div>
+  </div>
+</section>
+
+<section class="values-section">
+  <div class="values-overlay"></div>
+
+  <div class="values-content">
+    <span class="yellow-tag">OUR VALUE</span>
+    <h2>Our Principles Guiding Every Client Project With Integrity</h2>
+
+    <div class="values-cards">
+      <div class="value-card">
+        <div class="value-icon">📚</div>
+        <h4>Our Vision</h4>
+        <p>
+          Sodales faucibus urna congue vulputate potenti turpis platea eget ut.
+        </p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">🎯</div>
+        <h4>Our Mission</h4>
+        <p>
+          Sodales faucibus urna congue vulputate potenti turpis platea eget ut.
+        </p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">📈</div>
+        <h4>Our Motto</h4>
+        <p>
+          Sodales faucibus urna congue vulputate potenti turpis platea eget ut.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES + TRUSTED BRANDS SECTION -->
+<section class="services-section">
+
+  <div class="trusted-strip">
+
+  <div class="services-content">
+    <div class="services-left">
+      <span class="yellow-tag">OUR SERVICES</span>
+      <h2>Professional Services Designed For Business Growth Worldwide</h2>
+      <p>
+        Stackly provides full-stack digital solutions to help businesses
+        grow, scale, and dominate their market.
+      </p>
+
+      <div class="service-list">
+        <div class="service-item active">
+          <h4>Performance Focus</h4>
+          <span>Maecenas consequat platea magnis litora nulla convalis fringilla</span>
+        </div>
+
+        <div class="service-item">
+          <h4>Premium Quality</h4>
+          <span>Maecenas consequat platea magnis litora nulla convalis fringilla</span>
+        </div>
+
+        <div class="service-item">
+          <h4>Client-Centered</h4>
+          <span>Maecenas consequat platea magnis litora nulla convalis fringilla</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="services-right">
+      <div class="service-badge">
+        Premium Digital<br/>Services
+      </div>
+      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978">
+    </div>
+  </div>
+
+</section>
+
+<!-- PROJECTS SECTION -->
+<section class="projects-section">
+
+  <div class="projects-header">
+    <span class="yellow-tag">LATEST PROJECT</span>
+    <h2>Explore Our Best Digital Project Works And Achievements</h2>
+    <p>
+      Take a look at some of our recent success stories and how we helped
+      brands grow digitally.
+    </p>
+  </div>
+
+  <div class="projects-grid">
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1503602642458-232111445657">
+      <div class="project-info">
+        <h4>Modern Website Redesign</h4>
+        <p>Enhanced Digital Performance</p>
+      </div>
+      <div class="project-arrow">↗</div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+      <div class="project-info">
+        <h4>High-Impact Branding</h4>
+        <p>Emerging Global Startups</p>
+      </div>
+      <div class="project-arrow">↗</div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f">
+      <div class="project-info">
+        <h4>E-Commerce Experience</h4>
+        <p>International Fashion Brands</p>
+      </div>
+      <div class="project-arrow">↗</div>
+    </div>
+
+</section>
+
+<!-- SUPPORT SECTION -->
+<section class="support-section">
+  <span class="yellow-tag">NEED MORE HELP?</span>
+  <h2>Discover Extra Help From Our Expert Support Team</h2>
+
+  <div class="support-grid">
+    <div class="support-card">
+      <div class="support-icon">💬</div>
+      <h4>Customer Support</h4>
+      <p>Lorem ipsum dolor sit amet odio gravida lobortis montes nostra netus.</p>
+      <a href="#" class="yellow-btn">Chat Now</a>
+    </div>
+
+    <div class="support-card active">
+      <div class="support-icon">📩</div>
+      <h4>Ticket Support</h4>
+      <p>Lorem ipsum dolor sit amet odio gravida lobortis montes nostra netus.</p>
+      <a href="#" class="black-btn">Send Ticket</a>
+    </div>
+
+    <div class="support-card">
+      <div class="support-icon">📚</div>
+      <h4>Free Insight</h4>
+      <p>Lorem ipsum dolor sit amet odio gravida lobortis montes nostra netus.</p>
+      <a href="#" class="yellow-btn">Read Article</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-content">
+    <h3>Get exclusive industry trends and expert strategies straight to your inbox.</h3>
+    <form>
+      <input type="text" placeholder="Name">
+      <input type="email" placeholder="Email">
+      <button>Sign Up Newsletter</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+
+    <div class="footer-brand">
+      <img src="assets/images/logo/stackly_logo.webp" height="40">
+      <p>
+        Stackly is a modern digital marketing platform focused on growth,
+        performance, and measurable business success.
+      </p>
+
+      <div class="footer-socials">
+        <a href="#" title="Gmail">📧</a>
+        <a href="#" title="LinkedIn">💼</a>
+        <a href="#" title="Facebook">📘</a>
+        <a href="#" title="Instagram">📸</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#">Performance Marketing</a>
+      <a href="#">Brand Strategy</a>
+      <a href="#">Content Production</a>
+      <a href="#">Social Management</a>
+      <a href="#">Web Development</a>
+      <a href="#">SEO Optimization</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="#">Help Center</a>
+      <a href="#">Contact Support</a>
+      <a href="#">Live Chat</a>
+      <a href="#">Ticket Request</a>
+      <a href="#">Service Guide</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Stackly</a>
+      <a href="#">Our Mission</a>
+      <a href="#">Careers</a>
+      <a href="#">Team Members</a>
+      <a href="#">Press Release</a>
+      <a href="#">Marketing Insights</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Stackly. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Data Protection</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.style.display = 
+      menu.style.display === "flex" ? "none" : "flex";
+  }
+</script>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    const isOpen = menu.style.display === "flex";
+
+    menu.style.display = isOpen ? "none" : "flex";
+    document.body.style.overflow = isOpen ? "auto" : "hidden";
+  }
+</script>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    const isOpen = menu.classList.contains("open");
+
+    if (isOpen) {
+      menu.classList.remove("open");
+      menu.style.display = "none";
+      document.body.style.overflow = "auto";
+    } else {
+      menu.classList.add("open");
+      menu.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+  }
+</script>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    const isOpen = menu.classList.contains("open");
+
+    if (isOpen) {
+      menu.classList.remove("open");
+      document.body.style.overflow = "auto";
+    } else {
+      menu.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+  }
+</script>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("open");
+    document.body.style.overflow =
+      menu.classList.contains("open") ? "hidden" : "auto";
+  }
+</script>
+
+</body>
+</html>
